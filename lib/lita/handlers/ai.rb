@@ -4,13 +4,14 @@ module Lita
       on :unhandled_message, :chat
 
       def self.cleverbot
-        @cleverbot ||= Cleverbot::Client.new
+        @cleverbot ||= CleverBot.new
       end
 
       def chat(payload)
         return unless chatting?(payload[:message])
         message = extract_aliases(payload[:message])
-        response.reply cleverbot.write message
+        reply = self.class.cleverbot.think(message.body)
+        robot.send_message(message.source, reply)
       end
 
       private
