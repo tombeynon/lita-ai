@@ -11,6 +11,7 @@ module Lita
         return unless chatting?(payload[:message])
         message = extract_aliases(payload[:message])
         reply = self.class.cleverbot.think(message.body)
+        reply = reply.to_s.split('|').map { |s| s.length == 4 ? [s.hex].pack("U") : s }.join('') if reply.to_s[0] == '|'
         robot.send_message(message.source, reply)
       end
 
