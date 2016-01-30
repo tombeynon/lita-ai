@@ -11,6 +11,7 @@ module Lita
         return unless chatting?(payload[:message])
         message = extract_aliases(payload[:message])
         reply = self.class.cleverbot.think(message.body)
+        reply.to_s.gsub!(/\|([0-9A-F]{4})/) { ["#{$1}".hex].pack("U") } if reply
         robot.send_message(message.source, reply)
       end
 
