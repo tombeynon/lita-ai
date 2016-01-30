@@ -36,9 +36,8 @@ describe Lita::Handlers::Ai, lita_handler: true do
       end
 
       it 'sends a message with cleverbot\'s response' do
-        reply = double(:reply)
-        expect(subject.class.cleverbot).to receive(:think).with('Hello'){ reply }
-        expect(subject.robot).to receive(:send_message).with(source, reply)
+        expect(subject.class.cleverbot).to receive(:think).with('Hello'){ 'Hi' }
+        expect(subject.robot).to receive(:send_message).with(source, 'Hi')
         subject.chat(message: message)
       end
 
@@ -67,9 +66,8 @@ describe Lita::Handlers::Ai, lita_handler: true do
       end
 
       it 'sends a message with cleverbot\'s response' do
-        reply = double(:reply)
-        expect(subject.class.cleverbot).to receive(:think).with('Hi'){ reply }
-        expect(subject.robot).to receive(:send_message).with(source, reply)
+        expect(subject.class.cleverbot).to receive(:think).with('Hi'){ 'Hello' }
+        expect(subject.robot).to receive(:send_message).with(source, 'Hello')
         subject.chat(message: message)
       end
     end
