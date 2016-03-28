@@ -22,7 +22,12 @@ module Lita
       def build_response(message)
         message = extract_aliases(message)
         reply = self.class.cleverbot.think(message.body)
-        reply.to_s.gsub(/\|([0-9A-F]{4})/) { ["#{$1}".hex].pack("U") } if reply
+        clean_response(reply.to_s) if reply
+      end
+
+      def clean_response(response)
+        response.gsub!(/\|([0-9A-F]{4})/) { ["#{$1}".hex].pack("U") }
+        HTMLEntities.new.decode(response)
       end
 
       def extract_aliases(message)
