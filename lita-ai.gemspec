@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-ai"
-  spec.version       = "0.1.1"
+  spec.version       = "0.1.2"
   spec.authors       = ["Tom Beynon"]
   spec.email         = ["tom@tombeynon.co.uk"]
   spec.description   = "Makes lita respond to unhandled messages using Cleverbot"
