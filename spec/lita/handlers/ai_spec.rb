@@ -43,11 +43,18 @@ describe Lita::Handlers::Ai, lita_handler: true do
 
     end
 
-    context 'unicode format reply' do
+    context 'unicode decoding' do
       let(:message){ double(:message, body: '中文', command?: true, source: source) }
       before { allow(described_class.cleverbot).to receive(:think).and_return("|56E0|4E3A|6211|4E0D|61C2...") }
 
       it { expect(subject.chat(message: message)[0]).to eq "因为我不懂..." }
+    end
+
+    context 'HTML entity decoding' do
+      let(:message){ double(:message, body: 'Foo &#xA9; bar &#x1D306;', command?: true, source: source) }
+      before { allow(described_class.cleverbot).to receive(:think).and_return("Baz &#x2603; Bim &aring;") }
+
+      it { expect(subject.chat(message: message)[0]).to eq "Baz ☃ Bim å" }
     end
 
     context 'mentioning lita' do
