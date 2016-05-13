@@ -2,9 +2,11 @@ module Lita
   module Handlers
     class Ai < Handler
       on :unhandled_message, :chat
+      config :api_key, type: String
+      config :api_user, type: String
 
       def self.cleverbot
-        @cleverbot ||= CleverBot.new
+        @cleverbot ||= Cleverbot.new(Lita.config.handlers.ai.api_user,Lita.config.handlers.ai.api_key)
       end
 
       def chat(payload)
@@ -21,7 +23,7 @@ module Lita
 
       def build_response(message)
         message = extract_aliases(message)
-        reply = self.class.cleverbot.think(message.body)
+        reply = self.class.cleverbot.say(message.body)
         clean_response(reply.to_s) if reply
       end
 

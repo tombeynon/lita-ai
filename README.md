@@ -20,11 +20,15 @@ gem 'lita-ai'
 
 ## Configuration
 
-None
+Sign up at cleverbot.io and enter your api user and key into lita_config.rb.
+
+config.handlers.ai.api_user = '<redacted>'
+config.handlers.ai.api_key = '<redacted>'
+
 
 ## Usage
 
-Just send a message mentioning your robot by it's name or alias, either directly as a command or anywhere else in the message. 
+Just send a message mentioning your robot by it's name or alias, either directly as a command or anywhere else in the message.
 
 ```
 > lita what's up?
@@ -34,7 +38,7 @@ Just send a message mentioning your robot by it's name or alias, either directly
 #=> Sure, when and where?
 ```
 
-Your robots name will be stripped from the message we send to Cleverbot.. we don't want to confuse it anymore than it already is. 
+Your robots name will be stripped from the message we send to Cleverbot.. we don't want to confuse it anymore than it already is.
 
 ## License
 

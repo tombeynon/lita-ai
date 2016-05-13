@@ -1,5 +1,5 @@
 require "lita"
-require "clever-api"
+require "cleverbot"
 require "htmlentities"
 
 Lita.load_locales Dir[File.expand_path(

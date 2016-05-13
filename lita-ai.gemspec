@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-ai"
-  spec.version       = "0.1.2"
+  spec.version       = "0.1.3"
   spec.authors       = ["Tom Beynon"]
   spec.email         = ["tom@tombeynon.co.uk"]
   spec.description   = "Makes lita respond to unhandled messages using Cleverbot"
@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "lita", ">= 4.6"
-  spec.add_runtime_dependency "clever-api", "~> 0.0.2"
+  spec.add_runtime_dependency "cleverbot_io", "~> 1.2.2"
   spec.add_runtime_dependency "htmlentities", "~> 4.3"
 
   spec.add_development_dependency "bundler", "~> 1.3"
