@@ -20,10 +20,12 @@ gem 'lita-ai'
 
 ## Configuration
 
-Sign up at cleverbot.io and enter your api user and key into lita_config.rb.
+Sign up at [cleverbot.io](http://cleverbot.io) and enter your api user and key into lita_config.rb.
 
+```
 config.handlers.ai.api_user = '<redacted>'
 config.handlers.ai.api_key = '<redacted>'
+```
 
 
 ## Usage
