@@ -6,7 +6,15 @@ module Lita
       config :api_user, type: String
 
       def self.cleverbot
-        @cleverbot ||= Cleverbot.new(Lita.config.handlers.ai.api_user,Lita.config.handlers.ai.api_key)
+        @cleverbot ||= Cleverbot.new(api_user, api_key)
+      end
+
+      def self.api_user
+        Lita.config.handlers.ai.api_user
+      end
+
+      def self.api_key
+        Lita.config.handlers.ai.api_key
       end
 
       def chat(payload)
